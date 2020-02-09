@@ -1,6 +1,4 @@
-------------------------------------------------------------------------
-    Informatik Projekt: Lokales Mehrspieler Dame von Sarah Poloczek
-    Informatik Projekt: Lokales Mehrspieler Dame von Sarah Poloczek
+
 -Feld
     -Feld wird in Java erzeugt )
     -8*8 als Standard festlegen
@@ -35,13 +33,3 @@ OPTINAL:
     -Farben anpassbar machen
     -Feldgroße veränderbar
     -optionale Regeln hinzufügen (z.B. Russisches Dame)
-
-
-------------------------------------------------------------------------
-
-PROJECT TITLE:Dame
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:Sarah Poloczek
-USER INSTRUCTIONS: Pls don't break my game >.>
