@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 /**
- * Diese Klasse verwaltet die Klassen Figur und Feld. Das GUI erstellt nur noch diese
- * Klasse, um ein Spiel zu starten.
+ * Diese Klasse verwaltet die Klassen Figur und GUI. Innerhalb des gameloops finden alle Prozesse wärend des Spiels statt.
  * 
  * @author (Sarah) 
  * @version (1)
@@ -9,9 +8,11 @@ import java.util.ArrayList;
 public class Game
 {   
     ArrayList<Figur> field= new ArrayList<Figur>();
+    public String SPL = "Spieler 1";
+    public String SPD = "Spieler 2";
     public Game()
     {
-      erstelleFiguren(); 
+      createFigures(); 
       //geschlagene Fiuren aus dem "Feld entfernen"
     } 
     
@@ -22,21 +23,23 @@ public class Game
      //GameLoop wird gestartet
 
      //Prüfen, ob Zug erforderlich ist
-     //hasToBeat();
      //Warten auf Eingabe des Users
      //Prüfe, ob Zug in erlaubte Richtung geht
      //Prüfe, ob Zug auf ein leeres Feld führt
      //Zug wird ausgeführt
      //Nächste Spieler ist dran. Loop wird neu gestartet.
+     //loop wird beendet, sobald ein Spieler gewonnen bzw verloren hat.
 
     }
+    
     /**
      * Erstellt die Figuren im Array zu beginn des Spieles. Die Figuren sind In einem 8*8
      * Feld positioniert. In einer Schleife werden den Figuren die richtige Position, sowie 
      * der Status zugewiesen. Der Status beschreibt, ob die Figur hell/dunkel und Dame/nicht-Dame 
      * ist. Der Status 0 steht für eine Figur, welche nicht mehr im Spiel ist.
        */
-    private void erstelleFiguren(){
+      //fertig
+    private void createFigures(){
         //1-3 in der Y-Ebene zu belegen mit DARKNORMAL (x 1-8)
         //6-8 in der Y-Ebene mit LIGHTNORMAL belegen
         field.clear();
@@ -72,46 +75,57 @@ public class Game
     }
     
     /**
-     * Diese Funktion überprüft, ob der Spieler im gegenwärtigen Zug die Figur
-     * des anderen Spieler schlagen muss. Wenn ja, dann wird die zu spielende
-     * Figur makiert. Züge mit anderen Figuren sind ungültig. Es muss ein Zug
-     * getätigt werden, der eine Figur eines anderen Spielers aus dem Spiel 
-     * bringt.
+     *
+     * Diese Funktion überprüft, ob eine einzelne, ihr übergebene, Figur einen Zug tätigen muss.
+     * 
      */
-    private boolean hasToBeat()
+    private boolean hasToBeat(Figur temp)
     {
+        //this function is not finished yer
         for(int i=0;i<field.size();i++){
-            if(field.get(i).getState()!=Figur.BEATEN){
+            //figures with the state BEATEN are not in the game anymore
+            //the figure which is tested can beat ifself, therefore shall be ignored
+            if(field.get(i).getState()!=Figur.BEATEN || field.get(i)!=temp){
                 continue;
             }
-            //checking state LIGHT
-            if(field.get(i).getState()==Figur.LIGHTNORMAL || field.get(i).getState()==Figur.LIGHTPOWEFUL){
-                
-            }
-            //checking state DARK
-            if(field.get(i).getState()==Figur.DARKNORMAL || field.get(i).getState()==Figur.DARKPOWEFUL){
-                
-            }
+            //only Figures of opposit color need to get checked 
+            //only figures in dioginal reach needs to get checked
         }
         
         return false;
     }
     
-    private Figur IsOnField(){
-        for(int i=0;i<field.size();i++){
-            
+    /**
+    *Diese Funktion gibt zurück, welche Figur sich auf dem Ausgewählzen feld befindet.
+     *
+     * @retun the figure or null
+    * */
+    private Figur isOnField(int x, int y){
+        for(int i=0;i<field.size();i++) {
+            //checking if that place in the array is not empthy.
+            if (field.get(i) != null) {
+                //checking if the x and y coordinate are fitting.
+                if (field.get(i).getX() == x && field.get(i).getY() == y) {
+                    return field.get(i);
+                }
+            }
         }
+        //it returns null if no figure is on the field
         return null;
     }
 
     /**
      * Diese Funktion prüft, ob das Feld, wo sich die Figur hinbewegen soll, leer ist.
      *
-     * @return true or false
+     * @return true=leer or false=besetzt
      */
-    private boolean fieldIsEmpty()
+    private boolean fieldIsEmpty(int x, int y)
     {
-       return false; 
+       if(isOnField(x,y)==null){
+           return true;
+       }else{
+           return false;
+       }
     }
 
     /**
@@ -125,13 +139,33 @@ public class Game
     }
 
     /**
-     * Diese Funktion prüft ob das Spiel zuende ist. Sie prüft, ob der Gegner noch
-     * Figuren zur verfügung hat oder
+     * Diese Funktion prüft ob das Spiel zuende ist. Sie prüft, wer gewonnen hat.
      * @return true or false
      */
-    private boolean hasWon()
+    private String hasWon()
     {
-    return false;
+        int splight=0;
+        int spdark=0;
+        //counting how many figures are remaining for each player 
+        for(int i=0;i<field.size();i++){
+            if(field.get(i).getState()==Figur.LIGHTNORMAL || field.get(i).getState()==Figur.LIGHTPOWERFUL){
+                splight++;
+            }else{
+                if(field.get(i).getState()==Figur.DARKNORMAL || field.get(i).getState()==Figur.DARKPOWERFUL){
+                    spdark++;
+                }
+            }
+        }
+        //if there is no figure remaining from one player, that player has lost
+        if(splight==0){
+            return SPD;
+        }else{
+            if(spdark==0){
+                return SPL;
+            }else{
+                return null;
+            }
+        }
     }
     
 }

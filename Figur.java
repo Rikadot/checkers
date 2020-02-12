@@ -9,9 +9,9 @@ public class Figur
 {
     public static final int BEATEN=0;
     public static final int LIGHTNORMAL=1;
-    public static final int LIGHTPOWEFUL=2;
+    public static final int LIGHTPOWERFUL=2;
     public static final int DARKNORMAL=3;
-    public static final int DARKPOWEFUL=4;
+    public static final int DARKPOWERFUL=4;
     
     
     private int x;
