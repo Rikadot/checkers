@@ -1,8 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 /**
- *Diese Klasse erstellt ein Objekt des Types "Game". Die Klasse GUI ließt die User
- *Eingaben ein und gibt sie an "Game" weiter.
+ *The GUI of the game
  */
 public class GUI extends javax.swing.JFrame
 {
@@ -10,8 +9,9 @@ public class GUI extends javax.swing.JFrame
     {
         
     }
-    
-    public void createGUI(){
+    //following is a test I did for creating a gui
+    public void createGUI()
+    {
         //erstellt Ein Fenster mit swing
         GUI frame=new GUI();
         frame.setTitle("checkers");

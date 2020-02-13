@@ -2,3 +2,7 @@
 *.class
 *.ctxt
 *.blueJ
+*.iml
+
+# folders #
+/.idea
