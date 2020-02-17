@@ -3,6 +3,9 @@
 *.ctxt
 *.blueJ
 *.iml
+*.idea
+*.project
+*.classpath
 
 # folders #
 /.idea/
