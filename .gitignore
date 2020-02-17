@@ -5,4 +5,5 @@
 *.iml
 
 # folders #
-/.idea
+/.idea/
+/bin/

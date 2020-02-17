@@ -28,37 +28,66 @@ public class Figure
       this.state=state;
     }
     //getter functions
-    public int getX(){
+    public int getX()
+    {
         return x;
     }
 
-    public int getY(){
+    public int getY()
+    {
         return y;
     }
     
-    public int getState(){
+    public int getState()
+    {
         return state;
     }
     //setter functions
-    public void setX(int newX){
+    public void setX(int newX)
+    {
         x=newX;
     }
     
-    public void setY(int newY){
+    public void setY(int newY)
+    {
         y=newY;
     }
-
+    //checking if a Figure is QUEEN or not
+    public boolean isQueen()
+    {
+    	if(state==LIGHTQUEEN || state==DARKQUEEN){
+    		return true;
+    	}
+    	return false;
+    }
+    //checking if a Figure is LIGHT or DARK
+    public boolean isLight()
+    {
+    	if(state==LIGHTNORMAL || state==LIGHTQUEEN){
+    		return true;
+    	}
+    	return false;
+    }
+    
+    public boolean isDark()
+    {
+    	if(state==DARKNORMAL || state==DARKQUEEN){
+    		return true;
+    	}
+    	return false;
+    }
+    
     public void changeState(){
-       if(state==LIGHTNORMAL || state==DARKNORMAL){
+       if(isQueen()==false){
            state++;
         } else {
            //making sure that a figure from a player can not change colors.
-            System.out.println("ERROR! An impossible state change was tried!");
+            System.out.println("ERROR! An impossible state change was tried! Figure is already QUEEN");
         }
     }
     //setting the state to "0" means that a figure got beaten.
     public void setStateNull(){
-        state=0;
+        state=BEATEN;
     }
 
 }
