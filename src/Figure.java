@@ -1,10 +1,10 @@
 
 /**
- * This class creates objects from type "figure". It represents every figure on the checker field -
+ * This class creates objects from type "Figure". It represents every Figure on the checker field -
  * therefore it knows its position ion the "field". The field itself doesn't exist as an object. This object
  * contain following informations for the game logic:
  * -X and Y coordinates
- * -color of the figure
+ * -color of the Figure
  * -queen or not
  * 
  * @author (Sarah) 
@@ -21,7 +21,7 @@ public class Figure
     private int x;
     private int y;
     private int state;
-    Figure(int x, int y, int state)
+    public Figure(int x, int y, int state)
     {
       this.x=x;
       this.y=y;
@@ -81,11 +81,11 @@ public class Figure
        if(isQueen()==false){
            state++;
         } else {
-           //making sure that a figure from a player can not change colors.
+           //making sure that a Figure from a player can not change colors.
             System.out.println("ERROR! An impossible state change was tried! Figure is already QUEEN");
         }
     }
-    //setting the state to "0" means that a figure got beaten.
+    //setting the state to "0" means that a Figure got beaten.
     public void setStateNull(){
         state=BEATEN;
     }
