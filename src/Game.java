@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 /**
  * This class manages the whole game. That includes the objects from type Figure and a GUI object.
