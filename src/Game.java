@@ -18,10 +18,7 @@ public class Game
     public  ArrayList<Figure> field= new ArrayList<Figure>();
     public String PL = "Player 1", //standard name for the player with the light figures
             PD = "Player 2"; //standard name for the player with the dark figures
-    public Game()
-    {
-      createFigures();
-    } 
+    public Game(){}
     
     public void gameLoop()
     {
@@ -44,35 +41,39 @@ public class Game
     /**
      * Creates the figures at the beginning of the game. The figures are positioned
      * in a 8*8 field. The "state" describes if a Figure is "light", "dark" and if that Figure is
-     * a "queen" or not.
-       */
-      //done
+     * a "queen" or not.***/
+
     public void createFigures()
     {
-        //1-3 in the Y-layer with DARKNORMAL (x 1-8)
+        //1-3 in the Y-layer with DARKNORMAL
         //6-8 in der Y-layer with LIGHTNORMAL
+
+        //making sure the field is empty when the function gets called
         field.clear();
 
         for(int y=1; y<=8;y++){
             for(int x=1; x<=8; x++){
                 //making sure that only every second field gets a figure
                 //this comes down to that x and y may never be even or uneven numbers at the same time
-                if((x%2==0 && y%2==1)||(x%2==1 && y%2==0)){
-                    continue;
-                }
+                if(x%2==0 && y%2==1||x%2==1 && y%2==0){
                 //filling the first 3 rows with DARKNORMAL
-                if(y<=3){
-                    field.add(new Figure(x, y, Figure.DARKNORMAL));
-                }else{
-                    //filling the last 3 rows with LIGHTNORMAL
-                    if(y>=6 && y<=8){
-                        field.add(new Figure(x, y, Figure.LIGHTNORMAL));
-                    }
+
+                    if(y<=3){
+                        field.add(new Figure(x, y, Figure.DARKNORMAL));
+                        }else{
+                        //filling the last 3 rows with LIGHTNORMAL
+                        if(y>=6 && y<=8){
+                            field.add(new Figure(x, y, Figure.LIGHTNORMAL));
+                                        }
+                         }
+
                 }
             }
         }
     }
-    
+
+
+
     /**
      * This function removes a Figure out of the game logic
      * The state get set to BEATEN and 
