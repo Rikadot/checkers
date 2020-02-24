@@ -15,9 +15,9 @@ import java.util.ArrayList;
  * */
 public class Game
 {   
-    ArrayList<Figure> field= new ArrayList<Figure>();
-    public String PL = "Player 1"; //standard name for the player with the light figures
-    public String PD = "Player 2"; //standard name for the player with the dark figures
+    public  ArrayList<Figure> field= new ArrayList<Figure>();
+    public String PL = "Player 1", //standard name for the player with the light figures
+            PD = "Player 2"; //standard name for the player with the dark figures
     public Game()
     {
       createFigures();
@@ -47,7 +47,7 @@ public class Game
      * a "queen" or not.
        */
       //done
-    private void createFigures()
+    public void createFigures()
     {
         //1-3 in the Y-layer with DARKNORMAL (x 1-8)
         //6-8 in der Y-layer with LIGHTNORMAL
@@ -55,20 +55,22 @@ public class Game
 
         for(int y=1; y<=8;y++){
             for(int x=1; x<=8; x++){
-              switch(x%1) {
-                  case 1:
-                      if(y%1==0){
-                        if(y<=3){
-                          field.add(new Figure(x,y,Figure.LIGHTNORMAL));
-                        }
-                      }
-                      break;
-                  case 0:
-                      
-                      break;
-              }
+                //making sure that only every second field gets a figure
+                //this comes down to that x and y may never be even or uneven numbers at the same time
+                if((x%2==0 && y%2==1)||(x%2==1 && y%2==0)){
+                    continue;
+                }
+                //filling the first 3 rows with DARKNORMAL
+                if(y<=3){
+                    field.add(new Figure(x, y, Figure.DARKNORMAL));
+                }else{
+                    //filling the last 3 rows with LIGHTNORMAL
+                    if(y>=6 && y<=8){
+                        field.add(new Figure(x, y, Figure.LIGHTNORMAL));
+                    }
+                }
             }
-       }
+        }
     }
     
     /**
@@ -162,7 +164,7 @@ public class Game
      * is not made for queens.
      * @return true or false
      */
-    private boolean isRightDirection(Figure f, int y)
+    public boolean isRightDirection(Figure f, int y)
     {   
         //QUEEN can move in y-growing and y-decreasing direction
         if(f.isQueen()){

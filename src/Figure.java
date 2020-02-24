@@ -11,16 +11,9 @@
  */
 public class Figure
 {
-    public static final int BEATEN=0;
-    public static final int LIGHTNORMAL=1;
-    public static final int LIGHTQUEEN=2;
-    public static final int DARKNORMAL=3;
-    public static final int DARKQUEEN=4;
-    
-    
-    private int x;
-    private int y;
-    private int state;
+    public static final int BEATEN=0, LIGHTNORMAL=1, LIGHTQUEEN=2, DARKNORMAL=3, DARKQUEEN=4;
+
+    private int x, y, state;
     public Figure(int x, int y, int state)
     {
       this.x=x;
@@ -78,7 +71,7 @@ public class Figure
     }
     
     public void changeState(){
-       if(isQueen()==false){
+       if(!isQueen()){
            state++;
         } else {
            //making sure that a Figure from a player can not change colors.

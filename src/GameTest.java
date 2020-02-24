@@ -1,39 +1,15 @@
-/**
+import org.junit.Test;
+
 import static org.junit.Assert.*;
-import static org.junit.Test.*;
 
 public class GameTest {
+    @Test
+    public void createFigureTest_rightAmountOfFigures()
+    {
+        Game test = new Game();
+        test.createFigures();
+        assertEquals(24, test.field.size());
 
-    @org.junit.Test
-    public void gameLoop() {
     }
 
-    @org.junit.Test
-    public void removeFigure() {
-    }
-
-    @org.junit.Test
-    public void moveFigure() {
-    }
-
-    @org.junit.Test
-    public void isOnField() {
-    }
-
-    @org.junit.Test
-    public void fieldIsEmpty() {
-    }
-
-    @org.junit.Test
-    public void isValidMove() {
-    }
-
-    @org.junit.Test
-    public void toQueen() {
-    }
-
-    @org.junit.Test
-    public void hasWon() {
-    }
 }
- */

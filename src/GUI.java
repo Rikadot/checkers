@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  * The GUI will be called by the main method in order to create the Application.
  * For practicing purpose, the GUI will call itself
  */
-public class GUI  extends Application implements EventHandler<ActionEvent>
+public class GUI  extends Application
 {
         Button button1;
 
@@ -29,9 +29,8 @@ public class GUI  extends Application implements EventHandler<ActionEvent>
              primaryStage.setTitle("Title of the window");
 
             button1= new Button();
-            button1. setText("Click me");
 
-            button1.setOnAction(this);
+            button1.setOnAction(e -> System.out.println("Button was clicked"));
 
             StackPane layout = new StackPane();
             layout.getChildren(). add(button1);
@@ -40,13 +39,4 @@ public class GUI  extends Application implements EventHandler<ActionEvent>
             primaryStage.setScene(scene);
             primaryStage.show();
         }
-
-    @Override
-    public void handle(ActionEvent event)
-        {
-        if(event.getSource()==button1){
-        System.out.println("Button was clicked");
-        }
-        }
-
 }
