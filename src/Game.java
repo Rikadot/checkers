@@ -6,13 +6,6 @@ import java.util.ArrayList;
  * @author (Sarah)
  */
 
-/**
- * To do list:
- *  -finishing "has to beat"
- *      -write isInReach to help the function hasToBeat
-
- *  -creating main class
- * */
 public class Game
 {   
     public  ArrayList<Figure> field= new ArrayList<Figure>();
@@ -22,9 +15,7 @@ public class Game
     
     public void gameLoop()
     {
-        
      //folllowing are notes on the order of exeutions during one turn
-
      //load GUI
      //starting loop
      //check if the player has to beat another Figure
@@ -33,9 +24,7 @@ public class Game
      //check is the moves goes to an empty field
      //doing the move
      //restarting the loop but it is the other players turn
-
      //ending the loop if a player has won
-
     }
     
     /**
@@ -96,53 +85,74 @@ public class Game
     /**
      *This function checks, if the given Figure has to beat another one
      */
-    private boolean hasToBeat(Figure temp)
+    public boolean hasToBeat(Figure temp)
     {
         //this function is not finished yet
         for(int i=0;i<field.size();i++){
             //figures with the state BEATEN are not in the game anymore
-            //the Figure which is tested can beat itself, therefore shall be ignored
-            if(field.get(i).getState()!= Figure.BEATEN || field.get(i)!=temp){
-                continue;
+            //the Figure which is tested can beat itself, therefore shall be ignore
+            if(field.get(i).getState()== Figure.BEATEN || field.get(i)==temp){
+                break;
             }
-            //only Figures of opposit color need to get checked 
-
             //only figures in diaginal reach needs to get checked
-
             //a NORMAL Figure cannot beat a Figure behind it
+            if(!isInReach(temp, field.get(i))){
+                break;
+            }
+            //only Figures of opposit color need to get checked
+            if(temp.isLight() && field.get(i).isLight()) {
+                break;
+            }
+            if(temp.isDark() && field.get(i).isDark()){
+                break;
+            }
+            //making sure that the field behind the figure is empty
+            int x = temp.getX()-field.get(i).getX();
+            int y = temp.getY()-field.get(i).getY();
+            //checking if the field figure temp would have to jump on is empty
+            if(fieldIsEmpty(field.get(i).getX()-x, field.get(i).getY()-y)){
+                return true;
+            }
         }
-        
         return false;
     }
 
     /**
      * This fuction checks if Figure b is in diagonal reach of Figure a
-     * Figure a is the Figure of the payer who is at turn
+     * Figure a is the Figure of the player who is at turn
      * @return true or false
      */
     private boolean isInReach(Figure a, Figure b)
     {
-
+        //includes a checking if the figure is QUEEN or not
+        if(isRightDirection(a, b.getY()) && isMovingInRightDistanze(a, b.getX(),b.getY())){
+            return true;
+        }
         return false;
     }
-    
+
+
     /**
-     * This function checks which Figure is on the given field.
-     * @return the Figure or null
-    * */
-    public Figure isOnField(int x, int y)
+     * This function checks if the Figure can move in the given direction. the check on the y coordinate
+     * is not made for queens.
+     * @return true or false
+     */
+    public boolean isRightDirection(Figure f, int y)
     {
-        for(int i=0;i<field.size();i++) {
-            //checking if that place in the array is not empty.
-            if (field.get(i) != null) {
-                //checking if the x and y coordinate are fitting.
-                if (field.get(i).getX() == x && field.get(i).getY() == y) {
-                    return field.get(i);
-                }
-            }
+        //QUEEN can move in y-growing and y-decreasing direction
+        if(f.isQueen()){
+            return true;
         }
-        //it returns null if no Figure is on the field
-        return null;
+        //DARK has to move in in y-growing direction
+        if(f.getState()==Figure.DARKNORMAL && f.getY()<=y){
+            return true;
+        }
+        //LIGHT has to move in y-decreasing direction
+        if(f.getState()==Figure.LIGHTNORMAL && f.getY()>=y){
+            return true;
+        }
+        System.out.println("The Player tried to move in the wrong direction!");
+        return false;
     }
 
     /**
@@ -161,26 +171,22 @@ public class Game
     }
 
     /**
-     * This function checks if the Figure can move in the given direction. the check on the y coordinate
-     * is not made for queens.
-     * @return true or false
-     */
-    public boolean isRightDirection(Figure f, int y)
-    {   
-        //QUEEN can move in y-growing and y-decreasing direction
-        if(f.isQueen()){
-                return true;
+     * This function checks which Figure is on the given field.
+     * @return the Figure or null
+     * */
+    public Figure isOnField(int x, int y)
+    {
+        for(int i=0;i<field.size();i++) {
+            //checking if that place in the array is not empty.
+            if (field.get(i) != null) {
+                //checking if the x and y coordinate are fitting.
+                if (field.get(i).getX() == x && field.get(i).getY() == y) {
+                    return field.get(i);
+                }
+            }
         }
-        //DARK has to move in in y-growing direction
-        if(f.getState()==Figure.DARKNORMAL && f.getY()<=y){
-                return true;        
-        }
-        //LIGHT has to move in y-decreasing direction
-        if(f.getState()==Figure.LIGHTNORMAL && f.getY()>=y){
-                return true;            
-        }
-        System.out.println("The Player tried to move in the wrong direction!");
-       return false;
+        //it returns null if no Figure is on the field
+        return null;
     }
      
     /**
@@ -268,5 +274,4 @@ public class Game
             }
         }
     }
-    
 }

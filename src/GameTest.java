@@ -3,6 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class GameTest {
+
     @Test
     public void createFigureTest_rightAmountOfFigures()
     {
@@ -17,13 +18,38 @@ public class GameTest {
         Game test = new Game();
         test.createFigures();
         int position = 2;
+        //y: 1-3 DARKNORMAL expected
+        //y: 6-8 LIGHTNORMAL expected
         Figure temp = new Figure(6,1,Figure.DARKNORMAL);
         assertEquals(temp.getX(), test.field.get(position).getX());
         assertEquals(temp.getY(), test.field.get(position).getY());
         assertEquals(temp.getState(), test.field.get(position).getState());
-        //assertEquals(new Figure(4,1,Figure.DARKNORMAL), test.field.get(2));
-        //assertEquals(new Figure(1,6,Figure.LIGHTNORMAL), test.field.get(13));
-        //assertEquals(new Figure(3,6,Figure.LIGHTNORMAL), test.field.get(14))
+
     }
 
+    @Test
+    public void removeFigureTest()
+    {
+        Game test = new Game();
+        test.createFigures();
+        //checking if every Figure is removeable
+        for(int position = 0; position<test.field.size(); position++) {
+            test.removeFigure(test.field.get(position));
+            assertEquals(0, test.field.get(position).getX());
+            assertEquals(0, test.field.get(position).getY());
+            assertEquals(0, test.field.get(position).getState());
+        }
+    }
+
+    @Test
+    public void moveFigureTest()
+    {
+        
+    }
+
+    @Test
+    public void isOnFieldTest()
+    {
+        
+    }
 }
