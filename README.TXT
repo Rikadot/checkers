@@ -8,4 +8,4 @@ TO DO
 
    -making the UI
 
-   -writing UnitTests for remining functions of Game
+   -writing UnitTests for remaining functions of Game
