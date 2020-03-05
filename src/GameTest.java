@@ -42,14 +42,33 @@ public class GameTest {
     }
 
     @Test
-    public void moveFigureTest()
+    public void isOnFieldTest()
     {
-        
+        Game test = new Game();
+        test.createFigures();
+        Figure temp = new Figure(0,0,0);
+        for(int position =0;position<test.field.size(); position++) {
+            temp = test.field.get(position);
+            assertEquals(temp, test.isOnField(temp.getX(),temp.getY()));
+        }
     }
 
     @Test
-    public void isOnFieldTest()
+    public void moveFigureTest()
     {
-        
+        Game test = new Game();
+        test.createFigures();
+
     }
+    @Test
+    public void DirectionOfFigureTest()
+    {
+        Game test = new Game();
+        test.createFigures();
+        int x=0;
+        int y=0;
+     //   test.directionOfFigure(test.field.get(1), test.field);
+    }
+
+
 }

@@ -7,8 +7,13 @@
 *.project
 *.classpath
 
+
 # folders #
 /.idea/
 /bin/
 /out/
 /test/
+
+# JavaFX libary #
+javafx-sdk-13.0.2
+*.zip
