@@ -18,6 +18,7 @@ import javafx.stage.Stage;
  */
 public class GUI  extends Application
 {
+
     BorderPane primary_Layout = new BorderPane();
         public static void main(String[] args) {
             launch(args);
@@ -34,10 +35,8 @@ public class GUI  extends Application
             primaryStage.show();
         }
 
-        public void handleFieldButton(ActionEvent event )
-        {
-           // if(event.getSource()==)
-        }
+
+
 
 
         public GridPane add_secondary_Layout(){
@@ -50,6 +49,9 @@ public class GUI  extends Application
                     Button b= new Button(x+" x "+y);
                     b.setPadding(new Insets(14));
                     secondary_Layout.add(b, x, y);
+                    int finalX = x;
+                    int finalY = y;
+                    b.setOnAction(e ->  ));
                 }
             }
 

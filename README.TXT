@@ -1,6 +1,7 @@
         Before launching
 -library for Junit4 is included
--library for JavaFX 13ollowing settings settings in the IDE if a never version than Java 8 is used:
+-library for JavaFX is needed if a never version than Java 8 is used!
+    settings for the JavaFX SDK in your IDE
 projectstructure --> including the lib in the JavaFX file as library
 edit settings for running the program
 following needs to be included in VM settings:
@@ -14,10 +15,8 @@ TO DO
         -isValidMove() for if the player has to jump a figure
 
 
-   -creating main class
+   -sole problems described in the main class
 
-   -making the UI
-    -creating field
-    -cre
+   -finishing the UI
 
    -writing UnitTests for remaining functions of Game
