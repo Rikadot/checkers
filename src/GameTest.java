@@ -17,10 +17,10 @@ public class GameTest {
     {
         Game test = new Game();
         test.createFigures();
-        int position = 2;
+        int position = 0;
         //y: 1-3 DARKNORMAL expected
         //y: 6-8 LIGHTNORMAL expected
-        Figure temp = new Figure(6,1,Figure.DARKNORMAL);
+        Figure temp = new Figure(2,1,Figure.DARKNORMAL);
         assertEquals(temp.getX(), test.field.get(position).getX());
         assertEquals(temp.getY(), test.field.get(position).getY());
         assertEquals(temp.getState(), test.field.get(position).getState());

@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -18,6 +17,7 @@ import javafx.stage.Stage;
  */
 public class GUI  extends Application
 {
+    Main main = new Main();
 
     BorderPane primary_Layout = new BorderPane();
         public static void main(String[] args) {
@@ -31,30 +31,51 @@ public class GUI  extends Application
             //adding buttons
             primary_Layout.setCenter(add_secondary_Layout());
 
-            primaryStage.setScene(new Scene(primary_Layout, 500, 350));
+            primaryStage.setScene(new Scene(primary_Layout, 600, 600));
             primaryStage.show();
         }
 
-
-
-
-
         public GridPane add_secondary_Layout(){
             GridPane secondary_Layout = new GridPane();
-            secondary_Layout.setHgap(1);
-            secondary_Layout.setVgap(1);
+            secondary_Layout.setHgap(2);
+            secondary_Layout.setVgap(2);
             //adding Buttons
-            for(int x=0; x<8; x++) {
-                for(int y=0; y<8; y++){
-                    Button b= new Button(x+" x "+y);
-                    b.setPadding(new Insets(14));
-                    secondary_Layout.add(b, x, y);
-                    int finalX = x;
-                    int finalY = y;
-                    b.setOnAction(e ->  ));
-                }
-            }
+            makeButtons(secondary_Layout);
 
             return secondary_Layout;
+        }
+
+        public void setButtonColor(Button b,int x,int y){
+            if(!main.game.fieldIsEmpty(x, y)){
+                if(main.game.isOnField(x, y).isLight()){
+                   b.setStyle("-fx-background-color: #add8e6; ");
+                }else{
+                 if(main.game.isOnField(x, y).isDark()){
+                      b.setStyle("-fx-background-color: #00008b; ");
+                   }
+                }
+            }else{
+                b.setStyle("-fx-background-color: #D3D3D3; ");
+            }
+        }
+
+        public void makeButtons(GridPane grid)
+        {
+            for(int x=1; x<9; x++) {
+                for(int y=1; y<9; y++){
+                    Button b= new Button();
+                    b.setPrefWidth(60);
+                    b.setPrefHeight(60);
+                    setButtonColor(b,x,y);
+                    grid.add(b, x, y);
+                    int finalX = x;
+                    int finalY = y;
+
+                    b.setOnAction(e -> {
+                                main.handleTurn(finalX, finalY);
+                            }
+                    );
+                }
+            }
         }
     }

@@ -1,6 +1,6 @@
         Before launching
 -library for Junit4 is included
--library for JavaFX is needed if a never version than Java 8 is used!
+-library for JavaFX is needed if a newer version than Java 8 is used!
     settings for the JavaFX SDK in your IDE
 projectstructure --> including the lib in the JavaFX file as library
 edit settings for running the program
@@ -20,3 +20,7 @@ TO DO
    -finishing the UI
 
    -writing UnitTests for remaining functions of Game
+
+-----------------------------------------------------------------------------
+DARK = hex #00008b
+LIGHT = hex #add8e6

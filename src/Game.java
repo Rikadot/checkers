@@ -60,6 +60,7 @@ public class Game {
                 }
             }
         }
+        System.out.println("Figures were created!");
     }
 
 
@@ -210,7 +211,7 @@ public class Game {
                 if (isOnField(x, y) == null) {
                     return true;
                 } else {
-                    System.out.println("The player tried to move on an occupied field!");
+                    //System.out.println("The player tried to move on an occupied field!");
                     return false;
                 }
             }
