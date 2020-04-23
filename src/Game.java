@@ -38,7 +38,7 @@ public class Game {
         //1-3 in the Y-layer with DARKNORMAL
         //6-8 in der Y-layer with LIGHTNORMAL
 
-        //making sure the field is empty when the function gets called
+        //making sure the field is empty when this function gets called
         field.clear();
 
         for (int y = 1; y <= 8; y++) {
@@ -95,7 +95,7 @@ public class Game {
      * @return
      */
     public boolean PlayerHasToBeat(String Player) {
-        //only cheking light ot dark figures during the move of the given player
+        //only cheking light or dark figures during the move of the given player
         if (Player.equals(PD)) {
             for (int i = 0; i < field.size(); i++) {
                 if (field.get(i).isLight() && hasToBeat(field.get(i)) ) {
@@ -208,7 +208,7 @@ public class Game {
              */
             public boolean fieldIsEmpty ( int x, int y)
             {
-                if (isOnField(x, y) == null) {
+                if (returnFigure(x, y) == null) {
                     return true;
                 } else {
                     //System.out.println("The player tried to move on an occupied field!");
@@ -220,7 +220,7 @@ public class Game {
              * This function checks which Figure is on the given field.
              * @return the Figure or null
              * */
-            public Figure isOnField ( int x, int y)
+            public Figure returnFigure(int x, int y)
             {
                 for (int i = 0; i < field.size(); i++) {
                     //checking if that place in the array is not empty.

@@ -49,7 +49,7 @@ public class GameTest {
         Figure temp = new Figure(0,0,0);
         for(int position =0;position<test.field.size(); position++) {
             temp = test.field.get(position);
-            assertEquals(temp, test.isOnField(temp.getX(),temp.getY()));
+            assertEquals(temp, test.returnFigure(temp.getX(),temp.getY()));
         }
     }
 

@@ -11,11 +11,11 @@ following needs to be included in VM settings:
 -------------------------------------------------------------------------------
 
 TO DO
-   -checking ig game game includes all needed functions
+   -checking if game includes all needed functions
         -isValidMove() for if the player has to jump a figure
 
 
-   -sole problems described in the main class
+   -solve problems described in the main class
 
    -finishing the UI
 
@@ -24,3 +24,11 @@ TO DO
 -----------------------------------------------------------------------------
 DARK = hex #00008b
 LIGHT = hex #add8e6
+
+-----------------------------------------------------------------------------
+    Code Structure:
+    -Game class works as the library
+    -Main calls functions in the game class
+    -figure define the data structure of the hard coded data
+    -GUI is the UI of the checkers game
+-----------------------------------------------------------------------------

@@ -1,19 +1,13 @@
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
  *The GUI of the game using javaFX
- * The GUI will be called by the main method in order to create the Application.
- * For practicing purpose, the GUI will call itself
+ *
  */
 public class GUI  extends Application
 {
@@ -47,10 +41,10 @@ public class GUI  extends Application
 
         public void setButtonColor(Button b,int x,int y){
             if(!main.game.fieldIsEmpty(x, y)){
-                if(main.game.isOnField(x, y).isLight()){
+                if(main.game.returnFigure(x, y).isLight()){
                    b.setStyle("-fx-background-color: #add8e6; ");
                 }else{
-                 if(main.game.isOnField(x, y).isDark()){
+                 if(main.game.returnFigure(x, y).isDark()){
                       b.setStyle("-fx-background-color: #00008b; ");
                    }
                 }
@@ -72,7 +66,7 @@ public class GUI  extends Application
                     int finalY = y;
 
                     b.setOnAction(e -> {
-                                main.handleTurn(finalX, finalY);
+                                main.fieldIsClicked(finalX, finalY);
                             }
                     );
                 }
