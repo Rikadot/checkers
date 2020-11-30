@@ -78,11 +78,11 @@ public class Game {
     }
 
     /**
-     * Tis method moves a figure to another field. This method is not checking if a move was valid or not
+     * This method moves a figure to another field. This method is not checking if a move was valid or not
      *
      * @param f = a figure
      * @param x = the x-coordinate of the field the figure wants to move to
-     * @param y = zehe y-coordinate of the fiel the figure wants to move to
+     * @param y = the y-coordinate of the field the figure wants to move to
      */
     public void moveFigure(Figure f, int x, int y) {
         f.setX(x);

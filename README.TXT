@@ -27,7 +27,7 @@ LIGHT = hex #add8e6
 
 -----------------------------------------------------------------------------
     Code Structure:
-    -Game class works as the library
+    -Game class works as the library/API
     -Main calls functions in the game class
     -figure define the data structure of the hard coded data
     -GUI is the UI of the checkers game
